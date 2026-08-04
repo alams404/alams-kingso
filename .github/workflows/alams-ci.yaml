@@ -11,3 +11,5 @@ jobs:
        run: |
          echo "hello from cohort 6"
          echo "how is the training so far"
+         echo "i hope you are enjoying it"
+         
