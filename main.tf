@@ -110,7 +110,7 @@ resource "azurerm_linux_virtual_machine" "alams-vm" {
 
   admin_ssh_key {
     username   = "alams404"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = var.public.key
   }
 
   os_disk {
