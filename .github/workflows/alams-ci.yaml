@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   provider:
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
     environment: alams-vm-deploy
     outputs:
       vm-ip: ${{ steps.tf_output.vm-ip}}
