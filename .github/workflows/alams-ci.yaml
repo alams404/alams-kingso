@@ -8,7 +8,7 @@ jobs:
     runs-on: ububtu-latest
     environment: alams-vm-deploy
     outputs:
-      vm-ip: ${{ step.tf_output.vm-ip}}
+      vm-ip: ${{ steps.tf_output.vm-ip}}
     steps:
       - uses: actions/checkout@v4
 
