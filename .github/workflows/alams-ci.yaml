@@ -37,7 +37,7 @@ jobs:
         run: |
           terraform plan \
                 -var= "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" 
-                
+                -output= alams.tfplan
 
       - name: terraform apply
         run: terraform apply -auto-approve
