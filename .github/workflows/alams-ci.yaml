@@ -35,9 +35,9 @@ jobs:
 
       - name: terraform plan
         run: |
-                terraform plan
+          terraform plan \
                 -var= "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" /
-                output= alams.tfplan
+                -output= alams.tfplan
 
       - name: terraform apply
         run: terraform apply -auto-approve
@@ -48,9 +48,9 @@ jobs:
     steps:
       - name: ssh into the vm with private key
         run: |
-                   mkdir -p ~/.ssh
-                   echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
-                   chmod 600 ~/.ssh/id_rsa
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
 
       - name: wait for the vm to be ready
         run: |
