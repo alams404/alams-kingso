@@ -36,8 +36,8 @@ jobs:
       - name: terraform plan
         run: |
           terraform plan \
-                -var= "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" 
-                
+                -var= "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" /
+                -output= alams.tfplan
 
       - name: terraform apply
         run: terraform apply -auto-approve
@@ -74,6 +74,7 @@ jobs:
       - name: show when site is live
         run: |
                 echo "site is live" >>&2 GITHUB_STEP_SUMMARY
+
 
 
 
