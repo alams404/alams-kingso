@@ -53,26 +53,27 @@ jobs:
 
       - name: wait for the vm to be ready
         run: |
-                for i in (seq 110); do
-                  ssh -o StrictHostkeychecking=no -i ~/.ssh/id_rsa \
-                  alams404@${{ needs.provider.outputs.vm-ip }} echo ready && break
-                  echo "vm is not ready yet, wait 15 seconds..."
-                  sleep 15
-                  done
+          for i in $(seq 1 10); do
+            ssh -o StrictHostkeychecking=no \
+              -i ~/.ssh/id_rsa \
+              alams404@${{ needs.provider.outputs.vm-ip }} echo ready && break
+            echo "vm is not ready yet, wait 15 seconds..."
+            sleep 15
+          done
 
       - name: run the script on the vm
         run: |
-              ssh -o StrictHostkeychecking=no -i ~/.ssh/id_rsa alams404@${{ needs.provider.outputs.vm-ip }} "
-                sudo apt update && sudo apt upgade -y
-                sudo apt install nginx -y
-                cd /var/www/html
-                sudo rm -f index.nginx-debian.html
-                sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git .
-                sudo systemctl restart nginx
-              "
+          ssh -o StrictHostkeychecking=no -i ~/.ssh/id_rsa alams404@${{ needs.provider.outputs.vm-ip }} "
+            sudo apt update && sudo apt upgade -y
+            sudo apt install nginx -y
+            cd /var/www/html
+            sudo rm -f index.nginx-debian.html
+            sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git .
+            sudo systemctl restart nginx
+            "
       - name: show when site is live
         run: |
-                echo "site is live" >>&2 GITHUB_STEP_SUMMARY
+             echo "site is live" >>&2 GITHUB_STEP_SUMMARY
 
 
 
