@@ -78,7 +78,7 @@ jobs:
           "
       - name: show when site is live
         run: |
-             echo "site is live" >>&2 GITHUB_STEP_SUMMARY
+            echo "site is live" >>  $GITHUB_STEP_SUMMARY
 
 
 
