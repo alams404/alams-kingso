@@ -41,6 +41,11 @@ jobs:
       - name: terraform apply
         run: terraform apply -auto-approve
 
+      - name: get vm ip
+        id: tf_outputs
+        run: |
+          echo "vm-ip=$(terraform output -raw public_ip_address)" >> $GITHUB_OUTPUT
+
   configure:
     needs: provider
     runs-on: ubuntu-latest
