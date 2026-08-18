@@ -4,6 +4,7 @@ terraform {
     storage_account_name = "alams404"
     container_name       = "mytfstate"
     key                  = "alamsvm.tfstate"
+    use_azuread_auth     = true
   }
 }
 
@@ -110,7 +111,7 @@ resource "azurerm_linux_virtual_machine" "alams-vm" {
 
   admin_ssh_key {
     username   = "alams404"
-    public_key = var.SSH_PRIVATE_KEY
+    public_key = file("~/.ssh/id_rsa.pub")
   }
 
   os_disk {

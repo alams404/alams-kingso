@@ -58,6 +58,3 @@ variable "health-prob-name" {
   type        = string
   default     = "health-probe"
 }
-variable "SSH_PRIVATE_KEY" {
-  type = string
-}
