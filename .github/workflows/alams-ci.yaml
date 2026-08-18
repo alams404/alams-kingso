@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: alams-vm-deploy
     outputs:
-      vm-ip: ${{ steps.tf_output.vm-ip}}
+      vm-ip: ${{ steps.get_ip.outputs.vm-ip}}
     steps:
       - uses: actions/checkout@v4
 
@@ -69,7 +69,7 @@ jobs:
       - name: run the script on the vm
         run: |
           ssh -o StrictHostkeychecking=no -i ~/.ssh/id_rsa alams404@${{ needs.provider.outputs.vm-ip }} "
-            sudo apt update && sudo apt upgade -y
+            sudo apt update && sudo apt upgrade -y
             sudo apt install nginx -y
             cd /var/www/html
             sudo rm -f index.nginx-debian.html
