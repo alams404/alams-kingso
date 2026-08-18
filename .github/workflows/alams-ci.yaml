@@ -70,7 +70,7 @@ jobs:
             sudo rm -f index.nginx-debian.html
             sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git .
             sudo systemctl restart nginx
-            "
+          "
       - name: show when site is live
         run: |
              echo "site is live" >>&2 GITHUB_STEP_SUMMARY
